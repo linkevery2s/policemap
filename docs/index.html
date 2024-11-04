@@ -60,32 +60,17 @@
       border: 1px solid #ffffff;
     }
 
-    .side_menu {
-      position: absolute;
-      bottom: 40px;
-      right: 10px;
-      z-index: 15;
+    .title {
+      right: 0;
+      top: 0;
+      position: fixed;
+      background: rgba(255, 255, 255, .8);
+      z-index: 5;
     }
 
-    .button {
-      cursor: pointer;
-      color: #000000;
-      background: rgba(255, 255, 255, .8);
-      border: 1px solid #000000;
-      padding: .3em .5em .3em .5em;
-      border-radius: .5em;
-      border: 1px solid #000000;
-    }
-
-    .button2 {
-      cursor: pointer;
-      color: #000000;
-      background: rgba(255, 255, 255, .8);
-      border: 1px solid #000000;
-      padding: .3em .5em .3em .5em;
-      display: none;
-      border-radius: .5em;
-      border: 1px solid #000000;
+    .title a{
+      color: #008bf2;
+      border-bottom: 2px dotted #008bf2;
     }
   </style>
 
@@ -93,13 +78,17 @@
 
 <body>
 
-  <script type="module">
+  <div class="title p-3 text-right">
+    <p>日本全国交番マップ</p>
+    <p><a href="https://github.com/linkevery2s/policemap" target="_blank">src on GitHub</a></p>
+  
+  </div>
 
-    import { Vector3 } from 'https://cdn.jsdelivr.net/npm/math.gl@4.0.0/+esm';
+  <script type="module">
 
     onload = async () => {
 
-      const { DeckGL, Tile3DLayer, TileLayer, BitmapLayer, GeoJsonLayer, COORDINATE_SYSTEM, LinearInterpolator } = deck;
+      const { DeckGL, GeoJsonLayer } = deck;
 
       const basemap = "https://tile.openstreetmap.jp/styles/openmaptiles/style.json";
 
@@ -137,6 +126,7 @@
         opacity: 1,
         pickable: true
       });
+
 
 
       let initialViewState = {
